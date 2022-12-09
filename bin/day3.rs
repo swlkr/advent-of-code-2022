@@ -25,5 +25,28 @@ fn main() -> std::io::Result<()> {
         }
     }
     println!("{}", score);
+
+    let mut score2: u32 = 0;
+    let groups = input.lines().collect::<Vec<&str>>();
+    for group in groups.chunks(3) {
+        let first: HashSet<u8> = HashSet::from_iter(group[0].as_bytes().to_vec());
+        let second: HashSet<u8> = HashSet::from_iter(group[1].as_bytes().to_vec());
+        let third: HashSet<u8> = HashSet::from_iter(group[2].as_bytes().to_vec());
+        let mut sets = vec![first, second, third];
+        let (intersection, others) = sets.split_at_mut(1);
+        let intersection = &mut intersection[0];
+        for other in others {
+            intersection.retain(|e| other.contains(e));
+        }
+        if let Some(inter) = intersection
+            .clone()
+            .into_iter()
+            .collect::<Vec<u8>>()
+            .first()
+        {
+            score2 += u32::from(priority(inter));
+        }
+    }
+    println!("{}", score2);
     return Ok(());
 }
