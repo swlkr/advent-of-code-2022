@@ -85,45 +85,6 @@ impl Processor {
         }
         self.execution.push(self.register.value);
     }
-
-    // fn execute(&mut self) {
-    //     let mut instruction_counter = 0;
-    //     let mut instruction: Option<Instruction> = None;
-    //     // reverse instructions for pop()
-    //     self.instructions.reverse();
-    //     loop {
-    //         // start of cycle
-
-    //         // wait until # of cycles from last instruction before executing next
-    //         if instruction_counter == 0 {
-    //             // execution has finished from previous instruction
-    //             // get next instruction
-    //             instruction = self.instructions.pop();
-    //         }
-
-    //         // begin executing instruction
-    //         if let Some(i) = &instruction {
-    //             if instruction_counter < i.cycles - 1 {
-    //                 instruction_counter += 1;
-    //             } else {
-    //                 // execution has finished here
-    //                 match i.command {
-    //                     Command::Addx => {
-    //                         self.register.value += i.value.unwrap();
-    //                     }
-    //                     Command::Noop => {}
-    //                 }
-    //                 instruction_counter = 0;
-    //             }
-    //         }
-
-    //         // end of cycle
-    //         self.execution.push(self.register.value);
-    //         if instruction.is_none() {
-    //             break;
-    //         }
-    //     }
-    // }
 }
 
 struct Program {
